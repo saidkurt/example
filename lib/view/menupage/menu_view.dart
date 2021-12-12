@@ -3,7 +3,7 @@ import 'package:example/view/global/spinkit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../global/app_bar.dart';
-import 'menu_listview_builder.dart';
+import 'widget/menu_listview_builder.dart';
 
 class MenuView extends StatelessWidget {
   MenuView({Key? key}) : super(key: key);
@@ -12,13 +12,14 @@ class MenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: customAppBar("Menü"),
-        body: Obx(
-          () => menuController.mainMenuModel.isEmpty
-              ? const CustomSpinKit()
-              : MenuListViewBuilder(
-                  menuList: menuController.mainMenuModel,
-                ),
-        ));
+      appBar: CustomAppBar(),
+      body: Obx(
+        () => menuController.mainMenuModel.isEmpty
+            ? const CustomSpinKit()
+            : MenuListViewBuilder(
+                menuList: menuController.mainMenuModel,
+              ),
+      ),
+    );
   }
 }

@@ -7,13 +7,11 @@ class MenuController extends GetxController {
   final RxMap _menuModel = Map().obs;
   final RxList _mainMenuModel = [].obs;
   final RxList selectedMainMenuItem = [].obs;
+  final RxString selectedAppBarTitle = "Menü".obs;
+  final RxList selectedBasketItem = [].obs;
 
   Map get menuModel => _menuModel.value;
   List get mainMenuModel => _mainMenuModel.value;
-
-  void transitionMenuDetailPage() {
-    Get.to(() => MenuDetailPageView());
-  }
 
   Future<dynamic> loaddata() async {
     final data = await rootBundle.loadString('assets/menu.yaml');

@@ -10,17 +10,23 @@ class MoneyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black54.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: const Offset(0, 3),
+            ),
+          ],
           borderRadius: AppConst.mainMenuPageCardBorderRadius,
-          color: Colors.orange),
+          color: Colors.black54),
       width: 70,
       height: 50,
       child: Center(
         child: Text(
           money!.moneyTL(),
           style: AppTheme.darkTheme.textTheme.headline1!.copyWith(
-            fontSize: 15,
-            color: Colors.white,
-          ),
+              fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
     );

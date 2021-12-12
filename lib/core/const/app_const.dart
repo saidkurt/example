@@ -8,7 +8,7 @@ class AppConst {
   ///[Main Card]
   static final BorderRadius mainMenuPageCardBorderRadius =
       BorderRadius.circular(30);
-  static const Color mainMenuPAgeCardColor = Colors.black;
+  static const Color mainMenuPAgeCardColor = Colors.black54;
   static const double mainMenuPAgeCardSizedHeight = 10;
 
   ///[Onloading Spinkit]
