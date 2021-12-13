@@ -1,9 +1,9 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:example/controller/menu_controller.dart';
 import 'package:example/core/theme/app_theme.dart';
+import 'package:example/view/orderpage/order_page_dateil.view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../core/const/app_const.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -18,38 +18,57 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       actions: [
-        Visibility(
-          visible: Get.find<MenuController>().selectedBasketItem.value.isEmpty
-              ? false
-              : true,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: AppConst.mainMenuPageCardBorderRadius,
-                  color: Colors.orange),
-              child: Row(
-                children: [
-                  const Expanded(
-                      child: SizedBox(
-                        child: Center(
-                            child: Icon(
-                          EvaIcons.shoppingCartOutline,
-                          color: Colors.white,
-                        )),
-                      ),
-                      flex: 1),
-                  Expanded(
-                      child: Container(
-                        color: Colors.orange,
-                        child: Center(
-                          child: Text("13,00 TL"),
-                        ),
-                      ),
-                      flex: 2)
-                ],
+        Obx(
+          () => GestureDetector(
+            onTap: () {
+              Get.to(() => OrderPageDetail());
+              Get.find<MenuController>().selectedAppBarTitle.value =
+                  "Sipariş Detayı";
+            },
+            child: Visibility(
+              visible:
+                  Get.find<MenuController>().selectedBasketItem.value.isEmpty
+                      ? false
+                      : true,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: AppConst.mainMenuPageCardBorderRadius,
+                      color: Colors.orange),
+                  child: Row(
+                    children: [
+                      const Expanded(
+                          child: SizedBox(
+                            child: Center(
+                                child: Icon(
+                              EvaIcons.shoppingCartOutline,
+                              color: Colors.black,
+                            )),
+                          ),
+                          flex: 1),
+                      Expanded(
+                          child: Container(
+                            color: Colors.orange,
+                            child: Center(
+                              child: Text(
+                                Get.find<MenuController>()
+                                        .totalPrice
+                                        .value
+                                        .toStringAsFixed(2) +
+                                    " TL",
+                                style: AppTheme.darkTheme.textTheme.headline1!
+                                    .copyWith(
+                                        color: Colors.black, fontSize: 13),
+                              ),
+                            ),
+                          ),
+                          flex: 2)
+                    ],
+                  ),
+                  width: 100,
+                ),
               ),
-              width: 100,
             ),
           ),
         )
@@ -61,9 +80,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: IconButton(
           onPressed: () {
             Get.find<MenuController>().selectedAppBarTitle.value = "Menü";
-            Navigator.pop(context);
+            Get.back();
           },
-          icon: const Icon(EvaIcons.arrowBackOutline),
+          icon: const Icon(
+            EvaIcons.arrowLeft,
+            color: Colors.white,
+          ),
         ),
       ),
       title: Text(

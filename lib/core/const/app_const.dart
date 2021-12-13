@@ -18,4 +18,7 @@ class AppConst {
   ///[Default Page Transition]
   static const Transition pageTransition = Transition.fadeIn;
   static const Duration pageDuration = Duration(milliseconds: 500);
+
+  static const iconDeletePath =
+      "https://mpng.subpng.com/20191102/zut/transparent-bin-icon-delete-icon-remove-icon-5dbe1082968a29.4612454215727371546166.jpg";
 }

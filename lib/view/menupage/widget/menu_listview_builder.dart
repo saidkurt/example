@@ -1,4 +1,5 @@
 import 'package:example/controller/menu_controller.dart';
+import 'package:example/view/discount%20menu/discount_menu.dart';
 import 'package:example/view/global/menu_card.dart';
 import 'package:example/view/menudetailpage/menu_detail_page.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,9 @@ class MenuListViewBuilder extends StatelessWidget {
             onTap: () {
               Get.find<MenuController>().selectedMainMenuItem.value =
                   menuList[index]['items'];
-              Get.to(() => MenuDetailPageView());
+              menuList[index]['name'] != "İndirimli Menüler"
+                  ? Get.to(() => MenuDetailPageView())
+                  : Get.to(() => DiscountMenu());
               Get.find<MenuController>().selectedAppBarTitle.value =
                   menuList[index]['caption'];
             },

@@ -4,8 +4,8 @@ import '../../../core/const/app_const.dart';
 import '../../../core/theme/app_theme.dart';
 
 class MoneyWidget extends StatelessWidget {
-  MoneyWidget({Key? key, required this.money}) : super(key: key);
-  String? money;
+  MoneyWidget({Key? key, required this.title}) : super(key: key);
+  String? title;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +24,7 @@ class MoneyWidget extends StatelessWidget {
       height: 50,
       child: Center(
         child: Text(
-          money!.moneyTL(),
+          title!,
           style: AppTheme.darkTheme.textTheme.headline1!.copyWith(
               fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold),
         ),

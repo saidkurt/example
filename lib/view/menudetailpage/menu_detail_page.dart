@@ -1,11 +1,12 @@
 // ignore_for_file: invalid_use_of_protected_member
 
 import 'package:example/controller/menu_controller.dart';
-
 import 'package:example/core/theme/app_theme.dart';
 import 'package:example/view/global/app_bar.dart';
+import 'package:example/view/global/basket_widget.dart';
 import 'package:example/view/global/menu_card.dart';
 import 'package:example/view/menudetailpage/widget/money_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -43,11 +44,30 @@ class MenuDetailPageView extends StatelessWidget {
                     right: 0,
                     top: 20,
                     child: MoneyWidget(
-                      money: Get.find<MenuController>()
-                          .selectedMainMenuItem
-                          .value[index]["price"]
-                          .toString(),
+                      title: Get.find<MenuController>()
+                              .selectedMainMenuItem
+                              .value[index]["price"]
+                              .toString() +
+                          " TL",
                     ),
+                  ),
+                  BasketWidget(
+                    name: Get.find<MenuController>()
+                        .selectedMainMenuItem
+                        .value[index]["name"]
+                        .toString(),
+                    price: double.parse(Get.find<MenuController>()
+                        .selectedMainMenuItem
+                        .value[index]["price"]
+                        .replaceFirst(",", ".")),
+                    image: Get.find<MenuController>()
+                        .selectedMainMenuItem
+                        .value[index]["image"]
+                        .toString(),
+                    caption: Get.find<MenuController>()
+                        .selectedMainMenuItem
+                        .value[index]["caption"]
+                        .toString(),
                   ),
                 ],
               ),
